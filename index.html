@@ -97,9 +97,8 @@
         ctx.rect(60, 40, 40, 40);
         ctx.rect(110, 40, 40, 40);
         ctx.stroke();
-        
 
-        var acidos = { "Ácido perclórico" : "HClO4", "Ácido clorídrico" : "HCL", "Ácido hipocloroso" : "HClO", "Ácido cloroso" : "HClO2", "Ácido clórico" : "HClO3", "Ácido fluorídrico" : "HF", "Ácido clorogênico" : "C16H18O9", "Ácido cloroacético" : "C2H3ClO2", "Ácido clorossulfônico" : "HSO3Cl", "Ácido bromídrico" : "HBr", "Ácido bromoso" : "HBrO2", "Ácido hipobromoso" : "HBrO", "Ácido hipoiodoso" : "HIO2", "Ácido iodídrico" : "HI", "Ácido iodoso" : "HIO2", "Ácido iodico" : "HIO3", "Ácido sulfídrico" : "H2S", "Ácido sulfuroso" : "H2SO3", "Ácido sulfúrico" : "H2SO4", "Ácido sulfônico" : "CH3SO2OH", "Ácido sulfâmico" : "H3NSO3", "Ácido cianídrico" : "HCN", "Ácido cianúrico": "C3H3N3O3", "Ácido ferrocianídrico" : "H2SO4", "Ácido ferroso" : "FeSO4", "Ácido fosfórico" : "H3PO4", "Ácido hipofosforoso" : "H3PO2", "ácido fosforoso" : "H3PO3", "Ácido salicílico" : "C7H6O3", "Ácido bórico" : "H3BO3", "Ácido carbônico" : "H2CO3", "Ácido carboxílico" : "COOH", "Ácido nítrico" : "HNO3", "Ácido nitroso" : "HNO2", "Ácido hiponitroso" : "H2N2O2"}
+        var acidos = { "Ácido perclórico" : "HClO4", "Ácido clorídrico" : "HCL", "Ácido hipocloroso" : "HClO", "Ácido cloroso" : "HClO2", "Ácido clórico" : "HClO3", "Ácido fluorídrico" : "HF", "Ácido clorogênico" : "C16H18O9", "Ácido cloroacético" : "C2H3ClO2", "Ácido clorossulfônico" : "HSO3Cl", "Ácido bromídrico" : "HBr", "Ácido bromoso" : "HBrO2", "Ácido hipobromoso" : "HBrO", "Ácido hipoiodoso" : "HIO2", "Ácido iodídrico" : "HI", "Ácido iodoso" : "HIO2", "Ácido iodico" : "HIO3", "Ácido sulfídrico" : "H2S", "Ácido sulfuroso" : "H2SO3", "Ácido sulfúrico" : "H2SO4", "Ácido sulfônico" : "CH3SO2OH", "Ácido sulfâmico" : "H3NSO3", "Ácido cianídrico" : "HCN", "Ácido cianúrico": "C3H3N3O3", "Ácido ferrocianídrico" : "H2SO4", "Ácido ferroso" : "FeSO4", "Ácido fosfórico" : "H3PO4", "Ácido hipofosforoso" : "H3PO2", "ácido fosforoso" : "H3PO3", "Ácido salicílico" : "C7H6O3", "Ácido bórico" : "H3BO3", "Ácido carbônico" : "H2CO3", "Ácido carboxílico" : "COOH", "Ácido nítrico" : "HNO3", "Ácido nitroso" : "HNO2", "Ácido hiponitroso" : "H2N2O2", "Ácido acético" : "CH3COOH"}
         var botoes = document.getElementsByClassName("alt");
         var h1 = document.getElementById("h1");
         var r = 0;
@@ -131,7 +130,7 @@
         function Proxima(a, debug) {
             if (debug == true) {
                 div.innerHTML = ++acertos
-                if (acertos == 35) {
+                if (acertos == Object.keys(acidos).length) {
                     jogo.innerHTML = ""
                     footer.innerHTML = "Você venceu!"
                     rel.style.visibility = "visible";
@@ -145,7 +144,7 @@
             botoes[2].style.backgroundColor = "rgb(240, 240, 240)"
             botoes[3].style.backgroundColor = "rgb(240, 240, 240)"
 
-            if (cont < 36) {
+            if (cont < Object.keys(acidos).length + 1) {
                 h1.innerHTML = `${Object.values(acidos)[a]}`;
                 var lBotoes = [];
                 var lBotoes2 = [];
@@ -209,12 +208,16 @@
                     botoes[num].style.backgroundColor = "rgb(182, 39, 39)";
                     botoes[buttonResposta].style.backgroundColor = "green";
                     rel.style.visibility = "visible";
+                    
                 }                
             }
-            if (acertos == 35) {
+            if (acertos == Object.keys(acidos).length) {
                 jogo.innerHTML = ""
                 footer.innerHTML = "Você venceu!"
                 rel.style.visibility = "visible";
+                var gif = document.createElement("img");
+                gif.src = "https://i.pinimg.com/originals/65/10/b7/6510b705c8e55cae7429abeb904462b9.gif"
+                div2.appendChild(gif)
             }
         }
         
